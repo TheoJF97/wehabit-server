@@ -2,8 +2,11 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("dotenv").config();
+
+// Routes
 const userRoutes = require("./routes/user-routes");
 const habitsRoutes = require("./routes/habits-routes");
+const encouragemintsRoutes = require("./routes/encouragemints-routes");
 
 const PORT = process.env.PORT || 5050;
 
@@ -22,6 +25,7 @@ app.use("/users", userRoutes);
 app.use("/habits", habitsRoutes);
 
 // MW that GETs all encouragemints
+app.use("/encouragemints", encouragemintsRoutes);
 
 app.listen(PORT, function () {
   console.log(`Server is running on ${PORT}`);
