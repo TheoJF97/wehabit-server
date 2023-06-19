@@ -3,4 +3,5 @@ const userController = require("../controllers/user-controller");
 
 router.route("/").get(userController.index);
 
+
 module.exports = router;

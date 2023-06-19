@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 require("dotenv").config();
 const userRoutes = require("./routes/user-routes");
+const habitsRoutes = require("./routes/habits-routes");
 
 const PORT = process.env.PORT || 5050;
 
@@ -14,8 +15,13 @@ app.get("/", (_req, res) => {
   res.send("WELCOME TO MY API");
 });
 
-// MW that GETs all users 
+// MW that GETs all users
 app.use("/users", userRoutes);
+
+// MW that GETs all habits
+app.use("/habits", habitsRoutes);
+
+// MW that GETs all encouragemints
 
 app.listen(PORT, function () {
   console.log(`Server is running on ${PORT}`);
