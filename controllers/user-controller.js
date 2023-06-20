@@ -8,6 +8,15 @@ const getAllUsers = (_req, res) => {
     .catch((err) => res.status(400).send(`Error retrieving users: ${err}`));
 };
 
+const getUser = (req, res) => {
+  knex("user")
+    .where({ id: req.params.id })
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => res.status(400).send(`Error retrieving users: ${err}`));
+};
+
 const getUserHabits = (req, res) => {
   knex("habits")
     .where({ user_id: req.params.id })
@@ -29,4 +38,5 @@ const getUserHabits = (req, res) => {
 module.exports = {
   getAllUsers,
   getUserHabits,
+  getUser,
 };
