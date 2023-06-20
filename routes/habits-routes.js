@@ -1,6 +1,11 @@
 const router = require("express").Router();
-const habitsController = require("../controllers/habits-controller");
 
-router.route("/").get(habitsController.index);
+const {
+  getAllHabits,
+  getUserHabits,
+} = require("../controllers/habits-controller");
+
+router.route("/").get(getAllHabits);
+
 
 module.exports = router;

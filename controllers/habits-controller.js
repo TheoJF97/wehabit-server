@@ -1,6 +1,6 @@
 const knex = require("knex")(require("../knexfile"));
 
-const index = (_req, res) => {
+const getAllHabits = (_req, res) => {
   knex("habits")
     .then((data) => {
       res.status(200).json(data);
@@ -9,5 +9,5 @@ const index = (_req, res) => {
 };
 
 module.exports = {
-  index,
+  getAllHabits,
 };

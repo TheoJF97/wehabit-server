@@ -9,7 +9,8 @@
     "migrate": "npx knex migrate:latest",
     "migrate:down": "npx knex migrate:down",
     "migrate:rollback": "npx knex migrate:rollback",
-    "seed": "npx knex seed:run"
+    "seed": "npx knex seed:run",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +21,8 @@
     "express": "^4.18.2",
     "knex": "^2.4.2",
     "mysql2": "^3.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
