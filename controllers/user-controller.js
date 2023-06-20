@@ -35,8 +35,27 @@ const getUserHabits = (req, res) => {
     });
 };
 
+const getUserEncourageMints = (req, res) => {
+  knex("encouragemints")
+    .where({ author_id: req.params.id })
+    .then((foundEncourageMints) => {
+      if (foundEncourageMints.length === 0) {
+        return res.status(404).json({
+          message: `EncourageMints for user with ID: ${req.params.id} not found`,
+        });
+      }
+      res.status(200).json(foundEncourageMints);
+    })
+    .catch(() => {
+      res.status(500).json({
+        message: `Unable to retrieve EncourageMints for user with ID: ${req.params.id}`,
+      });
+    });
+};
+
 module.exports = {
   getAllUsers,
   getUserHabits,
   getUser,
+  getUserEncourageMints,
 };
