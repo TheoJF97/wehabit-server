@@ -3,6 +3,7 @@ const usersData = require("../seed-data/users");
 const habitsData = require("../seed-data/habits");
 const encouragemintsData = require("../seed-data/encouragemints");
 
+
 exports.seed = function (knex) {
   return knex("encouragemints")
     .del()
