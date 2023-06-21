@@ -8,6 +8,21 @@ const getAllHabits = (_req, res) => {
     .catch((err) => res.status(400).send(`Error retrieving users: ${err}`));
 };
 
+const addHabit = (req, res) => {
+  const { title, user_id } = req.body;
+  knex("habits")
+    .insert({ title, user_id })
+    .then((newHabit) => {
+      res.status(200).json(newHabit);
+    })
+    .catch(() => {
+      res.status(500).json({
+        message: "Unable to add habit. Please try again later.",
+      });
+    });
+};
+
 module.exports = {
   getAllHabits,
+  addHabit,
 };

@@ -1,7 +1,13 @@
 const router = require("express").Router();
 
-const { getAllHabits } = require("../controllers/habits-controller");
+const { 
+    addHabit,
+    getAllHabits 
+} = require("../controllers/habits-controller");
 
-router.route("/").get(getAllHabits);
+router
+    .route("/")
+    .get(getAllHabits)
+    .post(addHabit); //needs validation
 
 module.exports = router;
