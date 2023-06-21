@@ -37,7 +37,7 @@ const getUserHabits = (req, res) => {
 
 const getUserEncourageMints = (req, res) => {
   knex("encouragemints")
-    .where({ author_id: req.params.id })
+    .where({ target_id: req.params.id })
     .then((foundEncourageMints) => {
       if (foundEncourageMints.length === 0) {
         return res.status(404).json({

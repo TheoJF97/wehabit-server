@@ -1,5 +1,5 @@
 module.exports = [
-  // Habit ID 1
+  // Habit ID 1 - theo's habit of reading 
   { id: 1, habit_id: 1, date: "2023-06-18", completed: true },
   { id: 2, habit_id: 1, date: "2023-06-19", completed: false },
   { id: 3, habit_id: 1, date: "2023-06-20", completed: true },
@@ -8,7 +8,7 @@ module.exports = [
   { id: 6, habit_id: 1, date: "2023-06-23", completed: true },
   { id: 7, habit_id: 1, date: "2023-06-24", completed: false },
 
-  // Habit ID 2
+  // Habit ID 2 - theo's habit of exercise 
   { id: 8, habit_id: 2, date: "2023-06-18", completed: true },
   { id: 9, habit_id: 2, date: "2023-06-19", completed: true },
   { id: 10, habit_id: 2, date: "2023-06-20", completed: false },
@@ -17,7 +17,7 @@ module.exports = [
   { id: 13, habit_id: 2, date: "2023-06-23", completed: false },
   { id: 14, habit_id: 2, date: "2023-06-24", completed: true },
 
-  // Habit ID 3
+  // Habit ID 3 - theo's habit of meditation 
   { id: 15, habit_id: 3, date: "2023-06-18", completed: true },
   { id: 16, habit_id: 3, date: "2023-06-19", completed: false },
   { id: 17, habit_id: 3, date: "2023-06-20", completed: true },
