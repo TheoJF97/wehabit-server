@@ -7,6 +7,7 @@ require("dotenv").config();
 const userRoutes = require("./routes/user-routes");
 const habitsRoutes = require("./routes/habits-routes");
 const encouragemintsRoutes = require("./routes/encouragemints-routes");
+const completionsRoutes = require("./routes/completions-routes");
 
 const PORT = process.env.PORT || 5050;
 
@@ -26,6 +27,9 @@ app.use("/habits", habitsRoutes);
 
 // MW that GETs all encouragemints
 app.use("/encouragemints", encouragemintsRoutes);
+
+// MW for completions
+app.use("/completions", completionsRoutes)
 
 
 app.listen(PORT, function () {
