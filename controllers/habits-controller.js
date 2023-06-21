@@ -15,9 +15,11 @@ const addHabit = (req, res) => {
     .then((newHabit) => {
       res.status(200).json(newHabit);
     })
-    .catch(() => {
+    .catch((error) => {
+      console.log(error);
       res.status(500).json({
         message: "Unable to add habit. Please try again later.",
+        error: { error },
       });
     });
 };
