@@ -27,6 +27,7 @@ app.use("/habits", habitsRoutes);
 // MW that GETs all encouragemints
 app.use("/encouragemints", encouragemintsRoutes);
 
+
 app.listen(PORT, function () {
   console.log(`Server is running on ${PORT}`);
 });

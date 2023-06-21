@@ -12,6 +12,6 @@ const { validateAddHabit } = require("../middleware/habit-validation");
 router
     .route("/")
     .get(getAllHabits)
-    .post(validateAddHabit, addHabit); //needs validation
-
+    .post(validateAddHabit, addHabit);
+    
 module.exports = router;
