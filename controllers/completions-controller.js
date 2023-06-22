@@ -10,6 +10,17 @@ const getAllCompletions = (_req, res) => {
     );
 };
 
+const getCompletion = (req, res) => {
+  knex("completions")
+    .where({ id: req.params.id })
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) =>
+      res.status(400).send(`Error retrieving completions: ${err}`)
+    );
+};
+
 const inputCompletion = (_req, res) => {
   knex("completions")
     .where({ habit_id: 1, date: "2023-06-19" })
@@ -24,5 +35,6 @@ const inputCompletion = (_req, res) => {
 
 module.exports = {
   getAllCompletions,
+  getCompletion,
   inputCompletion,
 };
