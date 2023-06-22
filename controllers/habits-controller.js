@@ -36,8 +36,19 @@ const getHabit = (req, res) => {
     .catch((err) => res.status(400).send(`Error retrieving habit: ${err}`));
 };
 
+// ROUTE: GET /habits/:id
+const getHabitCompletions = (req, res) => {
+  knex("completions")
+    .where({ habit_id: req.params.id })
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => res.status(400).send(`Error retrieving habit: ${err}`));
+};
+
 module.exports = {
   getAllHabits,
   addHabit,
   getHabit,
+  getHabitCompletions,
 };
