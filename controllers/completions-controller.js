@@ -29,13 +29,14 @@ const inputCompletion = (req, res) => {
     .where({ id: completionId })
     .first()
     .then((completion) => {
+      console.log(completion)
       const updatedCompleted = completion.completed === 1 ? 0 : 1;
 
       knex("completions")
         .where({ id: completionId })
         .update({ completed: updatedCompleted })
         .then(() => {
-          res.status(200).json({ success: true });
+          res.status(200).json(completion);
         })
         .catch((err) => {
           res.status(500).json({ error: err });

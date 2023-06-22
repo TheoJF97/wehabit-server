@@ -8,7 +8,6 @@ exports.up = function (knex) {
       .onUpdate("CASCADE")
       .onDelete("CASCADE");
     table.date("date").notNullable();
-    table.boolean("completed").notNullable().defaultTo(false);
     table.timestamp("created_at").defaultTo(knex.fn.now()).notNullable();
     table
       .timestamp("updated_at")
