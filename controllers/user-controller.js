@@ -35,15 +35,18 @@ const getUserHabits = (req, res) => {
     });
 };
 
+// Fields we want: encouragemints.author_id, user.name as author_name, encouragemints.content
 const getUserEncourageMints = (req, res) => {
-  knex("encouragemints")
+  knex
+    .select(
+      "encouragemints.author_id",
+      "user.name as author_name",
+      "encouragemints.content"
+    )
+    .from("encouragemints")
     .where({ target_id: req.params.id })
+    .join("user", "user.id", "encouragemints.author_id")
     .then((foundEncourageMints) => {
-      if (foundEncourageMints.length === 0) {
-        return res.status(404).json({
-          message: `EncourageMints for user with ID: ${req.params.id} not found`,
-        });
-      }
       res.status(200).json(foundEncourageMints);
     })
     .catch(() => {

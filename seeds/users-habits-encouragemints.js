@@ -17,13 +17,13 @@ exports.seed = function (knex) {
       return knex("completions").del();
     })
     .then(function () {
-      return knex("completions").insert(completionsData);
-    })
-    .then(function () {
       return knex("user").insert(usersData);
     })
     .then(() => {
       return knex("habits").insert(habitsData);
+    })
+    .then(function () {
+      return knex("completions").insert(completionsData);
     })
     .then(() => {
       return knex("encouragemints").insert(encouragemintsData);

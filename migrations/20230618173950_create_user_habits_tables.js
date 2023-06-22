@@ -51,6 +51,6 @@ exports.up = function (knex) {
 exports.down = function (knex) {
   return knex.schema
   .dropTable("habits")
+  .dropTable("encouragemints")
   .dropTable("user")
-  .dropTable("encouragemints");
 };
