@@ -1,5 +1,6 @@
 const knex = require("knex")(require("../knexfile"));
 
+// ROUTE: GET /habits/
 const getAllHabits = (_req, res) => {
   knex("habits")
     .then((data) => {
@@ -8,6 +9,7 @@ const getAllHabits = (_req, res) => {
     .catch((err) => res.status(400).send(`Error retrieving users: ${err}`));
 };
 
+// ROUTE: POST /habits/
 const addHabit = (req, res) => {
   const { title, user_id } = req.body;
   knex("habits")
@@ -24,7 +26,18 @@ const addHabit = (req, res) => {
     });
 };
 
+// ROUTE: GET /habits/:id
+const getHabit = (req, res) => {
+  knex("habits")
+    .where({ id: req.params.id })
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => res.status(400).send(`Error retrieving habit: ${err}`));
+};
+
 module.exports = {
   getAllHabits,
   addHabit,
+  getHabit,
 };
