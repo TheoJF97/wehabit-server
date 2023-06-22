@@ -63,9 +63,36 @@ const postCompletion = (req, res) => {
     });
 };
 
+const getDateRangeCompletions = (req, res) => {
+  const habitId = req.params.id;
+  const { startDate, endDate } = req.params;
+
+  console.log(startDate);
+  console.log(endDate);
+
+  knex("completions")
+    .select()
+    .where({ habit_id: habitId })
+    .whereBetween("date", [startDate, endDate])
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({
+        message: "Unable to retrieve completions. Please try again later.",
+        error: { error },
+      });
+    });
+};
+
+// .where("date", ">=", startDate)
+// .where("date", "=<", endDate)
+
 module.exports = {
   getAllCompletions,
   getCompletion,
   // inputCompletion,
   postCompletion,
+  getDateRangeCompletions,
 };
