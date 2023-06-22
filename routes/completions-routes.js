@@ -4,11 +4,13 @@ const router = require("express").Router();
 const {
   getAllCompletions,
   getCompletion,
-  inputCompletion,
+  // inputCompletion,
+  postCompletion,
 } = require("../controllers/completions-controller");
 
-router.route("/").get(getAllCompletions)
+router.route("/").get(getAllCompletions).post(postCompletion);
 
-router.route("/:id").get(getCompletion).put(inputCompletion);
+router.route("/:id").get(getCompletion);
+// .put(inputCompletion);
 
 module.exports = router;
