@@ -21,16 +21,29 @@ const getCompletion = (req, res) => {
     );
 };
 
-const inputCompletion = (_req, res) => {
+const inputCompletion = (req, res) => {
+  const completionId = req.params.id;
+
   knex("completions")
-    .where({ habit_id: 1, date: "2023-06-19" })
-    .update({ completed: 1 })
-    .then((data) => {
-      res.status(200).json(data);
+    .select("completed")
+    .where({ id: completionId })
+    .first()
+    .then((completion) => {
+      const updatedCompleted = completion.completed === 1 ? 0 : 1;
+
+      knex("completions")
+        .where({ id: completionId })
+        .update({ completed: updatedCompleted })
+        .then(() => {
+          res.status(200).json({ success: true });
+        })
+        .catch((err) => {
+          res.status(500).json({ error: err });
+        });
     })
-    .catch((err) =>
-      res.status(400).send(`Error retrieving completions: ${err}`)
-    );
+    .catch((err) => {
+      res.status(400).json({ error: err });
+    });
 };
 
 module.exports = {
