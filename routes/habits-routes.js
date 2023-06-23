@@ -6,6 +6,7 @@ const {
   getAllHabits,
   getHabit,
   getHabitCompletions,
+  postCompletion,
 } = require("../controllers/habits-controller");
 
 //Middleware Validation
@@ -16,5 +17,8 @@ router.route("/").get(getAllHabits).post(validateAddHabit, addHabit);
 router.route("/:id").get(getHabit);
 
 router.route("/:id/completions").get(getHabitCompletions);
+
+// POST completion by HabitId by Date
+router.route("/:id/completions/:date").post(postCompletion);
 
 module.exports = router;

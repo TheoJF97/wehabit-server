@@ -46,9 +46,26 @@ const getHabitCompletions = (req, res) => {
     .catch((err) => res.status(400).send(`Error retrieving habit: ${err}`));
 };
 
+// ROUTE: POST /habits/:id/completions/:date
+const postCompletion = (req, res) => {
+  knex("completions")
+    .insert({ habit_id: req.params.id, date: req.params.date })
+    .then((completion) => {
+      res.status(200).json(completion);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({
+        message: "Unable to insert completion. Please try again later.",
+        error: { error },
+      });
+    });
+};
+
 module.exports = {
   getAllHabits,
   addHabit,
   getHabit,
   getHabitCompletions,
+  postCompletion,
 };
