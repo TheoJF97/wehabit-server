@@ -21,32 +21,6 @@ const getCompletion = (req, res) => {
     );
 };
 
-// const inputCompletion = (req, res) => {
-//   const completionId = req.params.id;
-
-//   knex("completions")
-//     .select("completed")
-//     .where({ id: completionId })
-//     .first()
-//     .then((completion) => {
-//       console.log(completion)
-//       const updatedCompleted = completion.completed === 1 ? 0 : 1;
-
-//       knex("completions")
-//         .where({ id: completionId })
-//         .update({ completed: updatedCompleted })
-//         .then(() => {
-//           res.status(200).json(completion);
-//         })
-//         .catch((err) => {
-//           res.status(500).json({ error: err });
-//         });
-//     })
-//     .catch((err) => {
-//       res.status(400).json({ error: err });
-//     });
-// };
-
 const postCompletion = (req, res) => {
   const { habit_id, date } = req.body;
   knex("completions")
@@ -86,8 +60,6 @@ const getDateRangeCompletions = (req, res) => {
     });
 };
 
-// .where("date", ">=", startDate)
-// .where("date", "=<", endDate)
 
 module.exports = {
   getAllCompletions,

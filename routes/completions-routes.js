@@ -3,18 +3,17 @@ const router = require("express").Router();
 //Middleware Controllers
 const {
   getAllCompletions,
-  getCompletion,
-  // inputCompletion,
   postCompletion,
+  getCompletion,
   getDateRangeCompletions,
 } = require("../controllers/completions-controller");
 
 router.route("/").get(getAllCompletions).post(postCompletion);
 
+router.route("/:id").get(getCompletion);
+
 // /completions/:id/:startDate/:endDate
 router.route("/:id/:startDate/:endDate").get(getDateRangeCompletions);
 
-router.route("/:id").get(getCompletion);
-// .put(inputCompletion);
 
 module.exports = router;
