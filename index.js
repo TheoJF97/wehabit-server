@@ -10,6 +10,8 @@ const userRoutes = require("./routes/user-routes");
 const habitsRoutes = require("./routes/habits-routes");
 const encouragemintsRoutes = require("./routes/encouragemints-routes");
 const completionsRoutes = require("./routes/completions-routes");
+const signupRoutes = require("./routes/signup-routes");
+const loginRoutes = require("./routes/login-routes");
 
 app.use(cors());
 app.use(express.json());
@@ -61,34 +63,9 @@ function getToken(req) {
   return req.headers.authorization.split(" ")[1];
 }
 
-const users = {};
+app.use("/signup", signupRoutes);
 
-app.post("/signup", (req, res) => {
-  const { username, name, password } = req.body;
-  users[username] = {
-    name,
-    password, // NOTE: Passwords should NEVER be stored in the clear like this. Use a
-    // library like bcrypt to Hash the password. For demo purposes only.
-  };
-  console.log("Users Object:", users);
-  res.json({ success: "true" });
-});
-
-app.post("/login", (req, res) => {
-  const { username, password } = req.body;
-  const user = users[username];
-  if (user && user.password === password) {
-    console.log("Found user:", user);
-    res.json({ token: jwt.sign({ id: user.id }, process.env.SECRET_KEY) });
-  } else {
-    res.status(403).json({
-      token: "",
-      error: {
-        message: "Error logging in. Invalid username/password combination.",
-      },
-    });
-  }
-});
+app.use("/login", loginRoutes);
 
 app.get("/profile", (req, res) => {
   res.json(req.decode);
