@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 8080;
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 require("dotenv").config();
