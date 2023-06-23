@@ -67,7 +67,8 @@ app.post("/signup", (req, res) => {
   const { username, name, password } = req.body;
   users[username] = {
     name,
-    password, // NOTE: Passwords should NEVER be stored in the clear like this. Use a              // library like bcrypt to Hash the password. For demo purposes only.
+    password, // NOTE: Passwords should NEVER be stored in the clear like this. Use a
+    // library like bcrypt to Hash the password. For demo purposes only.
   };
   console.log("Users Object:", users);
   res.json({ success: "true" });
@@ -78,7 +79,7 @@ app.post("/login", (req, res) => {
   const user = users[username];
   if (user && user.password === password) {
     console.log("Found user:", user);
-    res.json({ token: jwt.sign({ name: user.name }, process.env.SECRET_KEY) });
+    res.json({ token: jwt.sign({ id: user.id }, process.env.SECRET_KEY) });
   } else {
     res.status(403).json({
       token: "",
