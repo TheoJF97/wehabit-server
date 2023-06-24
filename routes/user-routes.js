@@ -15,4 +15,5 @@ router.route("/:id/habits").get(getUserHabits);
 
 router.route("/:id/encouragemints").get(getUserEncourageMints);
 
+
 module.exports = router;
