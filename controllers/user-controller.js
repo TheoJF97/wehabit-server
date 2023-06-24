@@ -14,7 +14,7 @@ const getUser = (req, res) => {
     .then((data) => {
       res.status(200).json(data);
     })
-    .catch((err) => res.status(400).send(`Error retrieving users: ${err}`));
+    .catch((err) => res.status(400).send(`Error retrieving user: ${err}`));
 };
 
 const getUserHabits = (req, res) => {
