@@ -21,11 +21,6 @@ const getUserHabits = (req, res) => {
   knex("habits")
     .where({ user_id: req.params.id })
     .then((foundHabits) => {
-      if (foundHabits.length === 0) {
-        return res.status(404).json({
-          message: `Habits for user with ID: ${req.params.id} not found`,
-        });
-      }
       res.status(200).json(foundHabits);
     })
     .catch(() => {
