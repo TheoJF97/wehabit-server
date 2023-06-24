@@ -34,34 +34,34 @@ app.use("/encouragemints", encouragemintsRoutes);
 app.use("/completions", completionsRoutes);
 
 // SIGNUP AND LOGIN ENDPOINTS
-app.use((req, res, next) => {
-  // Signup and login are public URLs that don't require a token
-  if (req.url === "/signup" || req.url === "/login") {
-    next();
-  } else {
-    // Format of request is BEARER <token>. Splitting on ' ' will create an
-    // array where the token is at index 1
-    const token = getToken(req);
+// app.use((req, res, next) => {
+//   // Signup and login are public URLs that don't require a token
+//   if (req.url === "/signup" || req.url === "/login") {
+//     next();
+//   } else {
+//     // Format of request is BEARER <token>. Splitting on ' ' will create an
+//     // array where the token is at index 1
+//     const token = getToken(req);
 
-    if (token) {
-      console.log("Auth Token:", token);
-      if (jwt.verify(token, process.env.SECRET_KEY)) {
-        // Decode the token to pass along to end-points that may need
-        // access to data stored in the token.
-        req.decode = jwt.decode(token);
-        next();
-      } else {
-        res.status(403).json({ error: "Not Authorized." });
-      }
-    } else {
-      res.status(403).json({ error: "No token. Unauthorized." });
-    }
-  }
-});
+//     if (token) {
+//       console.log("Auth Token:", token);
+//       if (jwt.verify(token, process.env.SECRET_KEY)) {
+//         // Decode the token to pass along to end-points that may need
+//         // access to data stored in the token.
+//         req.decode = jwt.decode(token);
+//         next();
+//       } else {
+//         res.status(403).json({ error: "Not Authorized." });
+//       }
+//     } else {
+//       res.status(403).json({ error: "No token. Unauthorized." });
+//     }
+//   }
+// });
 
-function getToken(req) {
-  return req.headers.authorization.split(" ")[1];
-}
+// function getToken(req) {
+//   return req.headers.authorization.split(" ")[1];
+// }
 
 app.use("/signup", signupRoutes);
 

@@ -6,10 +6,10 @@ const addUser = (req, res) => {
 
   knex("user")
     .insert({ name, email, password })
-    .then((info) => {
-      res.status(200).json(info);
+    .then((createdUser) => {
+      res.status(201).json(createdUser);
     })
-    .catch((err) => res.status(400).send(`Error adding new users: ${err}`));
+    .catch((err) => res.status(500).send(`Unable to Create new user: ${err}`));
 };
 
 module.exports = {
