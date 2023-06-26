@@ -1,6 +1,5 @@
 const knex = require("knex")(require("../knexfile"));
 const bcrypt = require("bcrypt");
-// password: bcrypt.hashSync(user.password, Number(process.env.SALT_ROUNDS)),
 
 const addUser = (req, res) => {
   const { name, email, password } = req.body;

@@ -30,7 +30,6 @@ const getUserHabits = (req, res) => {
     });
 };
 
-// Fields we want: encouragemints.author_id, user.name as author_name, encouragemints.content
 const getUserEncourageMints = (req, res) => {
   knex
     .select(

@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 require("dotenv").config();
 
-// Routes
 const userRoutes = require("./routes/user-routes");
 const habitsRoutes = require("./routes/habits-routes");
 const encouragemintsRoutes = require("./routes/encouragemints-routes");
@@ -14,7 +13,6 @@ const signupRoutes = require("./routes/signup-routes");
 const loginRoutes = require("./routes/login-routes");
 const { authenticate } = require("./middleware/authenticate");
 
-// middleware
 
 app.use(cors());
 app.use(express.json());
@@ -24,16 +22,12 @@ app.get("/", (_req, res) => {
   res.send("WELCOME TO MY API");
 });
 
-// MW that GETs all users
 app.use("/users", userRoutes);
 
-// MW that GETs all habits
 app.use("/habits", habitsRoutes);
 
-// MW that GETs all encouragemints
 app.use("/encouragemints", encouragemintsRoutes);
 
-// MW for completions
 app.use("/completions", completionsRoutes);
 
 app.use("/signup", signupRoutes);

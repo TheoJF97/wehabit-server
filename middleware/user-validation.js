@@ -7,7 +7,6 @@ const validateUser = (req, res, next) => {
     });
   }
 
-  // Email format validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const isValidEmail = emailRegex.test(req.body.email);
   if (!isValidEmail) {
@@ -16,7 +15,6 @@ const validateUser = (req, res, next) => {
     });
   }
 
-  // Validate unique email
   const uniqueEmailQuery = knex("user").where({ email: req.body.email });
 
   const isUpdate = req.params?.id;

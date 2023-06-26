@@ -4,8 +4,8 @@ require("dotenv").config();
 const users = [
   {
     id: 1,
-    name: "Theo Firtandi",
-    email: "theophilus.josiah@hotmail.com",
+    name: "John Smith",
+    email: "john.smith@hotmail.com",
     password: "password",
   },
   {

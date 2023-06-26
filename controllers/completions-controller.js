@@ -25,9 +25,6 @@ const getDateRangeCompletions = (req, res) => {
   const habitId = req.params.id;
   const { startDate, endDate } = req.params;
 
-  console.log(startDate);
-  console.log(endDate);
-
   knex("completions")
     .select()
     .where({ habit_id: habitId })
@@ -36,7 +33,6 @@ const getDateRangeCompletions = (req, res) => {
       res.json(data);
     })
     .catch((error) => {
-      console.log(error);
       res.status(500).json({
         message: "Unable to retrieve completions. Please try again later.",
         error: { error },

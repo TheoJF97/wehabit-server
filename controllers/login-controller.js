@@ -20,13 +20,8 @@ const loginUser = (req, res) => {
         });
       }
 
-      // Set the found user info in variable user containing id, name, email, pw
       const user = users[0];
 
-      console.log(password);
-      console.log(user.password);
-
-      // compare provided pw with hashed pw
       const validPassword = bcrypt.compareSync(password, user.password);
       if (!validPassword) {
         return res.status(401).json({
