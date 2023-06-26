@@ -35,7 +35,7 @@ The server will be accessible at http://localhost:8080 in your web browser.
 
 **Server:** Node.js, Express.js, MySQL
 
-**Tools and Libraries:** Axios, JWT, Knex, Bcrypt, CORS, Dotenv
+**Tools and Libraries:** Axios, JWT, Knex, Bcrypt, CORS, Dotenv, Moment.js
 
 
 ## Features
