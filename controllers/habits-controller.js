@@ -11,9 +11,9 @@ const getAllHabits = (_req, res) => {
 
 // ROUTE: POST /habits/
 const addHabit = (req, res) => {
-  const { title, user_id } = req.body;
+  const { title, description, user_id } = req.body;
   knex("habits")
-    .insert({ title, user_id })
+    .insert({ title, description, user_id })
     .then((newHabit) => {
       res.status(200).json(newHabit);
     })

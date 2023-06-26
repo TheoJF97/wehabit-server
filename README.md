@@ -1,5 +1,5 @@
 
-# Project Title
+# WeHabit
 
 WeHabit is a social habit tracking application that helps users establish and maintain positive habits. The application allows users to create their own habits, track their progress, and spur growth through encouraging others.
 ## Developer Installation Instructions
