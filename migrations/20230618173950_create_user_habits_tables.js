@@ -13,6 +13,7 @@ exports.up = function (knex) {
     .createTable("habits", (table) => {
       table.increments("id").primary();
       table.string("title").notNullable();
+      table.string("description", 1000);
       table
         .integer("user_id")
         .unsigned()
