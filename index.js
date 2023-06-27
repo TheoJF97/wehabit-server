@@ -13,8 +13,12 @@ const signupRoutes = require("./routes/signup-routes");
 const loginRoutes = require("./routes/login-routes");
 const { authenticate } = require("./middleware/authenticate");
 
+app.use(
+  cors({
+    origin: process.env.CORS_ORIGIN,
+  })
+);
 
-app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
