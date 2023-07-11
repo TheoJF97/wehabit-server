@@ -2,6 +2,7 @@ const router = require("express").Router();
 
 const {
   addHabit,
+  deleteHabit,
   getAllHabits,
   getHabit,
   getHabitCompletions,
@@ -12,7 +13,7 @@ const { validateAddHabit } = require("../middleware/habit-validation");
 
 router.route("/").get(getAllHabits).post(validateAddHabit, addHabit);
 
-router.route("/:id").get(getHabit);
+router.route("/:id").get(getHabit).delete(deleteHabit);
 
 router.route("/:id/completions").get(getHabitCompletions);
 

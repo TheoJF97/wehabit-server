@@ -23,6 +23,20 @@ const addHabit = (req, res) => {
     });
 };
 
+const deleteHabit = (req, res) => {
+  knex("habits")
+    .where({ id: req.params.id })
+    .del()
+    .then(() => {
+      res.sendStatus(204);
+    })
+    .catch(() => {
+      res.status(400).json({
+        message: `Error deleting user ${req.params.id}`,
+      });
+    });
+};
+
 const getHabit = (req, res) => {
   knex("habits")
     .where({ id: req.params.id })
@@ -58,6 +72,7 @@ const postCompletion = (req, res) => {
 module.exports = {
   getAllHabits,
   addHabit,
+  deleteHabit,
   getHabit,
   getHabitCompletions,
   postCompletion,

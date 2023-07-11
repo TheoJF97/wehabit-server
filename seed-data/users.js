@@ -19,25 +19,7 @@ const users = [
     name: "Danni McOnie",
     email: "dmconie2@netscape.com",
     password: "password",
-  },
-  {
-    id: 4,
-    name: "Horatia Dalyiel",
-    email: "hdalyiel3@fc2.com",
-    password: "password",
-  },
-  {
-    id: 5,
-    name: "Mohandis Nibley",
-    email: "mnibley4@marketwatch.com",
-    password: "password",
-  },
-  {
-    id: 6,
-    name: "Nester Brookfield",
-    email: "nbrookfield0@feedburner.com",
-    password: "password",
-  },
+  }
 ];
 
 module.exports = users.map((user) => {
